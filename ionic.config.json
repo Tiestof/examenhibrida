@@ -1,0 +1,7 @@
+{
+  "name": "examenhibrida",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
