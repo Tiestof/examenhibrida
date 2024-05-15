@@ -1,20 +1,24 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-title class="ion-text-center">
+      Publicaciones
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <!-- Uso de decoradores INPUT y OUTPUT -->
+  <app-lista-publicaciones 
+    [listaPublicacionesSave]="_publicacion">
+  </app-lista-publicaciones>
 </ion-content>
+
+<!-- Botón flotante para llamar a la página nueva publicacion -->
+<ion-fab-button 
+    slot="fixed" 
+    horizontal="end"
+    vertical="end" 
+    size="small"
+    [routerLink]="['../publicacion']">
+  <ion-icon name="add"></ion-icon>
+</ion-fab-button>

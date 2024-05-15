@@ -1,0 +1,48 @@
+<!--lista publicaciones Uso de PIPE-->
+
+<ion-list>
+  <ion-item *ngFor ="let p of listaPublicacionesSave ">  
+    <ion-img 
+      style="width: 120px; height: 80px; margin-right: 30px;"
+      [src]="p.imagen ? p.imagen: imagenPorDefecto" 
+      
+      ></ion-img>
+    <ion-label>
+      
+      <p style="color: rgb(4, 4, 4); text-align: left">
+        {{p.descripcion}} <!-- descripcion-->
+      </p> <br>
+      -  {{ p.fecha | date:'yyyy-MM-dd' }} <!-- uso del PIPE para el campo fecha -->
+    </ion-label>
+    
+    <ion-button 
+      size="small"
+      fill="clear"
+      (click)="borrarPublicacion(p)"> <ion-icon slot="end" name="trash"></ion-icon>
+    </ion-button>
+  </ion-item>
+</ion-list>
+
+<ion-modal [isOpen]="isModalEiminar">
+  <ng-template>
+    <ion-header>
+      <ion-button 
+            style="margin-right: 40px;"
+            size="small" 
+            fill="clear"
+            (click)="closeModal()"
+            >Cancelar
+        </ion-button>
+
+            <ion-text style="margin-right: 30px;" class="ion-text-center" size="small">Eliminar el Destino </ion-text>
+
+        <ion-button size="small"
+            fill="clear" 
+            (click)="eliminarValor()"
+            >Aceptar
+        </ion-button>
+      </ion-header>
+
+  </ng-template>
+</ion-modal>
+

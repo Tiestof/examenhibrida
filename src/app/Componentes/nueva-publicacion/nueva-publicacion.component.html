@@ -1,0 +1,78 @@
+<div class="component-container">
+  <ion-item color="Medium" lines="none">
+    <ion-text>
+      <b>Crea una nueva cita</b>
+    </ion-text>
+  </ion-item>
+  <ion-list [inset]="true">
+    <ion-item>
+
+      <!-- Integracion de las restricciones para el input -->
+      <ion-input  
+        [(ngModel)]="tituloStr" 
+        required="required"
+        minlength="5" 
+        #tituloinput ="ngModel"
+        label="Titulo"  
+        placeholder="Asalto en via publica" 
+        labelPlacement="floating"
+        [clearInput]="true"
+        [clearOnEdit]="true">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-button
+        style="margin-right: 40px;"
+        size="small"
+        (click)="tomaFoto()">
+        FOTOGRAFÍA <ion-icon slot="end" name="camera"> </ion-icon>
+      </ion-button>
+      <!--uso de *ngIf -->
+      <ion-img 
+        *ngIf="foto; else defaultImage" 
+        [src]="'data:image/jpeg;base64,' + foto.base64String"
+        style="width: 200px; height: 200px;" />
+      <ng-template #defaultImage>
+        <ion-img 
+          src="https://blue4spot.com/wp-content/uploads/2017/11/ICONO_FOTO.png"
+          style="width: 200px; height: 200px;" />
+      </ng-template>
+    </ion-item>
+    <ion-item>
+
+      <!-- Integracion de las restricciones para el input -->
+  <ion-input 
+        [(ngModel)]="descripcionStr" 
+        required="required"
+        minlength="20"
+        #descripcioninput ="ngModel"
+        label="Descripcion" 
+        placeholder="estan matando a un Hueon!!!" 
+        labelPlacement="floating"
+        [clearInput]="true"
+        [clearOnEdit]="true">
+              </ion-input>
+    </ion-item>
+    <ion-item>
+  </ion-item>
+  </ion-list>
+
+  <div>
+  <ion-item color="Medium" lines="none">
+    <ion-button [disabled]="tituloinput.invalid || descripcioninput.invalid || !foto?.base64String" (click)="onClick()">
+      GUARDAR
+    </ion-button>
+  </ion-item>
+    <ion-item> <!-- mensaje a mostrar si no se cumple con las indicaciones requeridas -->
+      <ion-text 
+        color="danger"
+        [hidden]="tituloinput.pristine && descripcioninput.pristine || !tituloinput.invalid && !descripcioninput.invalid && foto?.base64String">
+        !Titulo debe tener tener almenos 5 letras!
+        !Descripcion debe tener almenos 20 letras!
+        !Debe tomar una fotografia!
+      </ion-text>
+    </ion-item>
+      
+  </div>
+</div>
