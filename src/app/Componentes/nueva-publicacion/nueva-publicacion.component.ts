@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IonItem, IonText, IonList, IonInput, IonButton, IonIcon, IonImg } from "@ionic/angular/standalone";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -16,6 +16,8 @@ import { Camera, Photo, CameraResultType, CameraSource } from '@capacitor/camera
   imports: [IonImg, IonIcon, IonButton, IonInput, IonText, IonList, IonItem, FormsModule, CommonModule]
 })
 export class NuevaPublicacionComponent implements OnInit {
+
+  @Output() publicacionAgregada: EventEmitter<void> = new EventEmitter<void>();
 
   tituloStr: string = "";
   descripcionStr: string = "";
@@ -44,6 +46,7 @@ export class NuevaPublicacionComponent implements OnInit {
     this.addPublicacion.id = this._listaUp.length +1;
     this._listaUp.push(this.addPublicacion)
     await this.servicio.guardarPublicacion(this._listaUp)
+    this.publicacionAgregada.emit();
     console.log(this.addPublicacion);
     console.log(this._listaUp)
 

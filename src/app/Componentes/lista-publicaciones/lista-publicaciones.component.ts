@@ -21,7 +21,7 @@ export class ListaPublicacionesComponent  implements OnInit {
 
   @Input() listaPublicacionesSave: Publicacion [] = [];
   isModalEiminar:boolean =false;
-  imagenPorDefecto: string ="https://instalacionesherman.com/wp-content/uploads/2018/04/Imagen_por_defecto-600x450.png";
+  imagenPorDefecto: string ="";
   valorEliminar:Publicacion | null=null;
 
   constructor(
@@ -33,7 +33,7 @@ export class ListaPublicacionesComponent  implements OnInit {
   }
 
   async ngOnInit() {
-
+      this.listaPublicacionesSave = await this.servicio.obtenerPublicacion()
       console.log(this.listaPublicacionesSave);
   
   }

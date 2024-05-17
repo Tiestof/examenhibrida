@@ -1,3 +1,11 @@
+<ion-content [fullscreen]="true">
+  <!-- Uso de decoradores INPUT y OUTPUT -->
+  <app-lista-publicaciones 
+    [listaPublicacionesSave]="_publicacion"
+    (publicacionAgregada)="onNuevaPublicacionAgregada()">
+  </app-lista-publicaciones>
+</ion-content>
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title class="ion-text-center">
@@ -5,13 +13,6 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <!-- Uso de decoradores INPUT y OUTPUT -->
-  <app-lista-publicaciones 
-    [listaPublicacionesSave]="_publicacion">
-  </app-lista-publicaciones>
-</ion-content>
 
 <!-- Botón flotante para llamar a la página nueva publicacion -->
 <ion-fab-button 
