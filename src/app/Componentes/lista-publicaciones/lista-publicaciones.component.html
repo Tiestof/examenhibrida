@@ -1,19 +1,12 @@
-<!--lista publicaciones Uso de PIPE-->
-
-<ion-list>
+<ion-list> <!--lista publicaciones Uso de PIPE-->
   <ion-item *ngFor ="let p of listaPublicacionesSave ">  
     <ion-img 
       style="width: 120px; height: 80px; margin-right: 30px;"
       [src]="p.imagen ? p.imagen: imagenPorDefecto" 
       ></ion-img>
     <ion-label>
-      
-        {{p.titulo}} <!-- titulo--> 
-        <br>
-        {{p.descripcion}} <!-- descripcion--> 
-      <br>
-      <br>
-      -  {{ p.fecha | date:'yyyy-MM-dd' }} <!-- uso del PIPE para el campo fecha -->
+        {{p.titulo}} <!-- titulo--> <br> {{p.descripcion}} <!-- descripcion--> <br><br>
+      - {{ p.fecha | date:'yyyy-MM-dd' }} <!-- uso del PIPE para el campo fecha -->
     </ion-label>
     
     <ion-button 
@@ -23,27 +16,20 @@
     </ion-button>
   </ion-item>
 </ion-list>
-
+<!-- Modal de eliminacion -->
 <ion-modal [isOpen]="isModalEiminar">
   <ng-template>
     <ion-header>
-      <ion-button 
-            style="margin-right: 40px;"
-            size="small" 
-            fill="clear"
+      <ion-button style="margin-right: 40px;" size="small" fill="clear"
             (click)="closeModal()"
             >Cancelar
         </ion-button>
-
             <ion-text style="margin-right: 30px;" class="ion-text-center" size="small">Eliminar el Destino </ion-text>
-
-        <ion-button size="small"
-            fill="clear" 
-            (click)="eliminarValor()"
+        <ion-button size="small" fill="clear" 
+        (click)="eliminarValor()"
             >Aceptar
         </ion-button>
       </ion-header>
-
   </ng-template>
 </ion-modal>
 
